@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+  <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+    <dl>
+      <dt>latitude:
+      <dd><input type=text size=20 name=lat>
+
+      <dt>longitude:
+      <dd><input type=text size=20 name=long>
+
+      <dt>timestamp:
+      <dd><input type=text size=20 name=timestamp>
+
+      <dt>client:
+      <dd><input type=text size=20 name=client>
+
+      <dd><input type=submit value=Share>
+    </dl>
+  </form>
+
+  <table class=entries>
+    <tr>
+    <th>id</th>
+    <th>latitude</th>
+    <th>longitude</th>
+    <th>timestamp</th>
+    <th>client</th>
+    </tr>
+  {% for entry in entries %}
+    <tr>
+    <td>{{ entry.id }}</td>
+    <td>{{ entry.lat }}</td>
+    <td>{{ entry.long }}</td>
+    <td>{{ entry.timestamp }}</td>
+    <td>{{ entry.client }}</td>
+    </tr>
+  {% else %}
+    <tr><td><em>Unbelievable.  No entries here so far</em></td></tr>
+  {% endfor %}
+  </table>
+{% endblock %}
+

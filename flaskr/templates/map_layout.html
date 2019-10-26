@@ -1,0 +1,24 @@
+<!doctype html>
+<head>
+<title>Flaskr</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<script src="{{url_for('static', filename='leaflet/leaflet.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='leaflet/leaflet.css')}}">
+</head>
+<body>
+
+    <h1>Flask + Leaflet</h1>
+    <div id="llmap"></div>
+    <div>
+        <select id="distsel">
+        {% for message in get_flashed_messages() %}
+          <div class=flash>{{ message }}</div>
+
+          {% for district in districts %}
+          <option value="{{district.id}}">{{district.name}}</option>
+          {% endfor %}
+        </select>
+    </div>
+    <script src="{{url_for('static', filename='demo.js')}}"></script>
+</body>
+
